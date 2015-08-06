@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <!-- Rendering and touch zoom-->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Mobile Stylesheet -->
+   <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+   <!-- Load jQuery -->
+   <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+   <!-- Load jQuery Mobile -->
+   <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+   <!-- Add an external file that has your jQuery functions -->
+   <script>
+   myImages = new Array(
+				"https://41.media.tumblr.com/eb7be172b9deed9c670f14c341955e03/tumblr_nq1zigkpkf1uwzlwfo1_540.jpg",
+				"https://40.media.tumblr.com/e7275851be6e64ea1543f2fc5828ab7d/tumblr_ngzptxU12j1s46c7no1_540.jpg",
+				"https://40.media.tumblr.com/991bcb7d1f7996cf9495bc1c8be1cecb/tumblr_np8726pdt31uwzlwfo1_540.jpg",
+				"https://41.media.tumblr.com/cb76cfc0640dca5711f37f14a6d7f8b6/tumblr_nel00iFlpO1tqob5io1_540.jpg",
+				"https://36.media.tumblr.com/tumblr_lsyxqsVu6g1qc8cwuo1_540.jpg",
+				"https://41.media.tumblr.com/aeaa4ca9ea86ef4ac62d2adb4e4fd549/tumblr_nl0s9kGeKM1sowspzo2_540.jpg");
+	var imageIndex=0;
+
+		var changeImage = function(direction){
+			imageIndex = imageIndex + direction;
+
+			if (imageIndex > myImages.length - 1){
+				imageIndex = 0
+			}
+
+			if (imageIndex < 0) {
+				imageIndex = myImages.length-1
+			}
+
+			document.getElementById('imageDisplayed').src = myImages[imageIndex];
+		}
+   </script>
+   
+		
+   <style>
+   div {
+				background-colour:black;
+				colour: white;
+			}
+			div.box {
+				height: 200px;
+				width: 500px;
+			}
+			body {
+				background-color:black;
+		        color: white;
+			}
+			.pics {
+				align:center;
+			}
+			marquee{
+		color:red;
+		background-color: black;
+		}
+		<!--h1 { font-family: ‘Lobster’, cursive; 
+		font-weight: 400; }
+		p {font-family: 'Pacifico',cursive;
+		font-weight: 400;}
+		marquee {font-family: 'Pacifico',cursive;
+		font-weight: 200;}-->
+		h1{
+		background-color: blue;
+		color: white;}
+		
+   </style>
+</head>
+<body>
+		
+		
+	
+<!-- Start of first page -->
+<div data-role="page" id="pageone">
+
+	<div data-role="header">
+		<h1>MEDICAL HISTORY</h1>
+		<input type="submit" value="Add New">
+	</div><!-- /header -->
+	<!--my selfie-->
+		<div class="pics" align="center">
+		<img src = data:image/png;base64,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>
+		
+	
+	
+<!--PocketDoc-->
+<h2>HISTORY</h2>
+
+<!--name-->
+<form action="action_page.php" method="GET">
+<p align= left>
+First name:<br>
+<input type="text" name="firstname" value="">
+<br>
+Last name:<br>
+<input type="text" name="lastname" value="">
+<br><br>
+Middle name:<br>
+<input type="text" name="middlename" value="">
+<br>
+<!--DOB-->
+D.O.B.:<br>
+<input type="text" name="dob" value="">
+<br><br></p>
+
+<!--SEX-->
+Gender at birth:<br>
+<input type="radio" name="sexatbirth" value="male" checked>Male
+<br>
+<input type="radio" name="sexatbirth" value="female">Female
+<br><br>
+
+Gender identified with:
+<input type="radio" name="sex" value="male" checked>Male
+<br>
+<input type="radio" name="sex" value="female">Female
+<br>
+<input type="radio" name="sex" value="male" checked>TransMale
+<br>
+<input type="radio" name="sex" value="female">TransFemale
+<br>
+<input type="radio" name="sex" value="male" checked>Genderneutral
+<br><br>
+
+<!--RACE/ETH-->
+<p align= left>
+Race:<br>
+<input type="text" name="race" value="">
+<br>
+Ethnicity:<br>
+<input type="text" name="ethnicity" value="">
+<br><br>
+Blood Type:<br>
+<input type="text" name="bloodtype" value="">
+<br>
+
+Marital Status:<br>
+<input type="text" name="maritalstatus" value="">
+<br><br>
+Primary Language:<br>
+<input type="text" name="primarylanguage" value="">
+<br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Address:<br>
+<input type="text" name="address" value="">
+<br><br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Telephone:<br>
+<input type="text" name="dob" value="">
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Mobile:<br>
+<input type="text" name="race" value="">
+<br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Driver/'s License Number:
+<input type= "text" name="dln" value="">
+<br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+State:<br>
+<input type="text" name="state" value="">
+<br><br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Exp. Date:
+<input type= "text" name="exp" value="">
+<br>
+<img src=data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAMAAABhq6zVAAAAYFBMVEX///8uLC0vLS4zMTLNy8wmJCXd3d35+fl3d3fy8vLT09P8/Pzg4ODt7e1LSElLS0s5ODg2NDVBP0AgHh/Q0NBXVFXExMRtbW9mZme2traHh4d+fn+QkJBZWVuwsLFycnMqXgH2AAAAa0lEQVQImSXK2RaCMAxF0SQd0tFCsVVU5P//kjacp7vXugAA7JPNDBKn39G+9lb+tL2/XymOHUPpEWzZJ1iX4H0+/iyv5XTO1TMN2KIIEdWiBahGdONhcLYK6mZm2AdSM0RIWJ8DPmgpZLgAl4oEr4KNzBkAAAAASUVORK5CYII=>
+Social Security:<br>
+<input type="text" name="ss" value="">
+<br><br>
+Email:
+<input type= "text" name="email" value="">
+<br>
+Spouse(first,last,middle):<br>
+<input type="text" name="spouse" value="">
+<br><br>
+Pharmacy of Choice(name,city):<br>
+<input type= "text" name="poc" value="">
+<br>
+Pharmacy Telephone: <br>
+<input type="text" name="phartele" value="">
+<br><br>
+Emergency Contact:<br>
+<input type= "text" name="ec" value="">
+<br>
+Emergency Contact Telephone: <br>
+<input type="text" name="ectele" value="">
+<br><br>
+
+</p>
+<input type="submit" value="Save">
+
+</form> 
+
+<p>If you click "Submit", the form-data will be sent to a page called "action_page.php".</p>
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!--slideshow-->
+		<!--<p align="right">
+		<img id="imageDisplayed" src="https://41.media.tumblr.com/439b0cffcfb6ff5ba17faf11802c6417/tumblr_nl2itzh8Wp1so1g8io1_540.jpg"/>
+	</p>
+
+
+	<center>
+		<table border=0>
+			<tr>
+				<td align=center>
+					<input type="button" value="Previous Image" onclick="changeImage(-1);">
+					<input type="button" value="Next Image" onclick="changeImage(1);">
+				</td>
+			</tr>
+		</table>
+	</center>
+	<!--end of slideshow-->
+	
+		<!--scrolling text-->	
+		<!--<marquee>GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.</marquee>
+		
+	<!--second text-->
+		<!--<h2 align ="center"> GIRLS WHO CODE</h2>
+		<p align="center">	Girls Who Code: A national non-profit organization working to close</p> 
+		<p align="center">the gender gap in the technology and engineering sectors. 
+		With support from public and private partners,</p>		
+		<p align="center">GWC works to educate, inspire and equip high school girls with the skills and resources
+to      pursue opportunities in computing fields</p>
+
+<!--picture of desk-->
+	<!--	<div class="pics" align="center">
+		<img src = https://pbs.twimg.com/media/CJ9RuerUwAAigJa.jpg:thumb>
+		<img src = https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQkCKd3dFl8aiP77WQWeVQWEhb6Q47AAoCJxdb2a9YwRGbNDmmp>
+		<!--<div class="picsGWC" align="center-right">-->
+	<!--	<img src = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcThVhUH7l0rb5mHRKTeaEUWKRvzn138dMXpV1Spdub2Y60IbxSiRQ>
+		<img src = https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNcTcvVZV10XeUM3Rs6s_wAs9AuMUN-XCIhviuQsK6BcOJldYO>
+	<!--scrolling text-->	
+
+
+<!--scrolling text-->	
+		<!--<marquee>GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.GWC.Girls Who Code.</marquee>
+	<div data-role="main" class="ui-content">
+    	<a href="#pagetwo">NEXT PAGE</a>
+  	</div><!-- /main -->
+	
+
+	<!--<div data-role="footer">
+		<h1>GIRLS WHO CODE</h1>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<!--<div data-role="page" id="pagetwo">
+
+	<div data-role="header">
+		<h1>GIRLS WHO CODE</h1>
+	</div><!-- /header -->
+
+	<!-- <div data-role="main" class="ui-content">
+    	<a href="#pageone">Go to Page One</a>
+  	</div><!-- /main -->
+
+  	<!--<div data-role="main" class="ui-content">
+    	<p>KORKOICHARNELLE</p>
+  	</div>
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>
